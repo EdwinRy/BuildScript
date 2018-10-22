@@ -7,8 +7,8 @@ namespace BuildScript
     {
         Unrecognised,
         Identifier,
-        Number,
         String,
+        Number,
         OpenParam,
         CloseParam,
         OpenScope,

@@ -1,5 +1,4 @@
-
-Grammer:
+Grammar:
 
 const := <Name> | "<String>"
 list := { <value>* }
