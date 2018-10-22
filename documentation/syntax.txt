@@ -1,5 +1,5 @@
 
-Grammer:
+Grammar:
 
 const := <Name> | "<String>"
 list := { <value>* }
@@ -10,21 +10,29 @@ call := <Name> = run <Name of function>(<value>*)
 run := run <Name of stage>
 return := return <value>
 command := $(<Command>)
-line := <define> | <call> | <run> | <return> | <command>
+for := for <Name> in <list> | <Name of list> <block>
+line := <define> | <call> | <run> | <return> | <command> | <for>
 
 block := { <line>* }
-function := function <Name>(<Name>*) : <Name of OS> <block>
+function := function <Name>(<Name>*) : <Name of shell> <block>
 stage := stage <Name> <block>
+include := include <const>
 
 Example:
 
-function name(param1 param2 ...) : Windows
+include some_file.bs
+
+function name(param1 param2 ...) : Cmd
 {
     $(command)
+    for item in param1
+    {
+        $(do_something_with %item)
+    }
     return something
 }
 
-function name(param1 param2 ...) : Linux { ... }
+function name(param1 param2 ...) : Bash { ... }
 function name(param1 param2 ...) : Other { ... }
 
 stage name
