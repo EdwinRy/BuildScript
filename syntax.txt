@@ -13,16 +13,19 @@ command := $(<Command>)
 line := <define> | <call> | <run> | <return> | <command>
 
 block := { <line>* }
-function := function <Name>(<Name>*) <block>
+function := function <Name>(<Name>*) : <Name of OS> <block>
 stage := stage <Name> <block>
 
 Example:
 
-function name(param1 param2 ...)
+function name(param1 param2 ...) : Windows
 {
     $(command)
     return something
 }
+
+function name(param1 param2 ...) : Linux { ... }
+function name(param1 param2 ...) : Other { ... }
 
 stage name
 {
