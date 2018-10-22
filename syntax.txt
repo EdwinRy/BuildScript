@@ -1,0 +1,34 @@
+
+Grammer:
+
+const := <Name> | "<String>"
+list := { <value>* }
+value := <const> | <list>
+
+define := <Name> = <value>
+call := <Name> = run <Name of function>
+run := run <Name of stage>
+return := return <value>
+command := $(<Command>)
+line := <define> | <call> | <run> | <return> | <command>
+
+block := { <line>* }
+function := function <Name>(<Name>*) <block>
+stage := stage <Name> <block>
+
+Example:
+
+function name(param1 param2 ...)
+{
+    $(command)
+    return something
+}
+
+stage name
+{
+    var = value
+    list = { value1 value2 }
+
+    run stage
+    return_value = run function
+}
