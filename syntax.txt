@@ -3,10 +3,10 @@ Grammer:
 
 const := <Name> | "<String>"
 list := { <value>* }
-value := <const> | <list>
+value := <const> | <list> | <Name>
 
 define := <Name> = <value>
-call := <Name> = run <Name of function>
+call := <Name> = run <Name of function>(<value>*)
 run := run <Name of stage>
 return := return <value>
 command := $(<Command>)
@@ -30,5 +30,5 @@ stage name
     list = { value1 value2 }
 
     run stage
-    return_value = run function
+    return_value = run function(arg1 args ...)
 }
